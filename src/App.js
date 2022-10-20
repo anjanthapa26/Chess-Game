@@ -7,6 +7,7 @@ function App() {
     <>
     <div className='flex justify-center items-center h-screen bg-[#EA98D4]'>
     <FrontUi />
+    
     </div>
     </>
   );

@@ -20,14 +20,17 @@ const FrontUi = () => {
     const addGridBox = () => { 
         let evaluator;
         let counter = 0
+        const blackColor = '#B7C0D8'
+        const whiteColor = '#E8EDF9'
         for (let i = 1; i <= 64; i++) {
             evaluator = (i%8 === 0) ? true : false;
             if (i%2 == 0) {
+                totalGrid.push((counter%2 === 0) ? <ImageFilter key={i} color={blackColor} id={i}/>:<ImageFilter key ={i} color={whiteColor} id={i}/>)
 
-                totalGrid.push((counter%2 === 0) ? <div className='h-15 w-15 bg-[#B7C0D8]' key={i} id={i}></div>:<div className='h-15 w-15 bg-[#E8EDF9]' key={i} id={i}></div>)
+                {/*totalGrid.push((counter%2 === 0) ? <div className='h-15 w-15 bg-[#B7C0D8]' key={i} id={i}></div>:<div className='h-15 w-15 bg-[#E8EDF9]' key={i} id={i}></div>) */}
             }
             else {
-                totalGrid.push((counter%2 === 0) ? <div className='h-15 w-15 bg-[#E8EDF9]' key={i} id={i}></div>:<div className='h-15 w-15 bg-[#B7C0D8]' key={i} id={i}></div>)
+                totalGrid.push((counter%2 === 0) ? <ImageFilter key={i} color={whiteColor} id={i}/>:<ImageFilter key={i} color={blackColor} id={i}/>)
             }
             if(evaluator) {
                 counter +=1
@@ -79,7 +82,7 @@ const FrontUi = () => {
             </div>
 
             <div className='grid grid-cols-8 grid-rows- 8 h-[35rem] w-[35rem] border-solid shadow bg-[#ffffff] shadow-cyan-500/50' ref={ParentDiv} onClick={handleClickBtn}>
-                <ImageFilter images = {addGridBox()} />
+                {addGridBox()}
 
             </div>
         </>
